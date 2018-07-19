@@ -1,0 +1,42 @@
+<launch>
+  <include file="$(find jackal_description)/launch/description.launch" />
+  
+  <node pkg="jackal_base" type="jackal_node" name="jackal_node">
+    <rosparam>
+      # TODO: Specify these in code rather than here.
+      require:
+        publishers:
+          - status
+          - feedback
+        subscribers:
+          - cmd_drive
+          - wifi_connected
+    </rosparam>
+  </node>
+
+  <!-- TODO: Eliminate this by compiling the necessary message definitions into jackal_base. -->
+  <node pkg="rosserial_python" type="message_info_service.py" name="rosserial_message_info" />
+
+  <!-- Differential controller and basic localization -->
+  <include file="$(find jackal_control)/launch/control.launch" />
+
+    <arg name="joy_dev" default="/dev/input/js0" />
+    <arg name="joystick" default="true" />
+
+    <rosparam command="load" file="$(find jackal_control)/config/teleop.yaml" />
+    <param name="joy_node/dev" value="$(arg joy_dev)" />
+    <param name="teleop_twist_joy/enable_button" value="4" />
+    <param name="teleop_twist_joy/enable_turbo_button" value="0" />
+
+    <node pkg="joy" type="joy_node" name="joy_node" />
+
+    <node pkg="teleop_twist_joy" type="teleop_node" name="teleop_twist_joy">
+        <remap from="cmd_vel" to="/cmd_vel" />
+    </node>
+
+    <node pkg="interactive_marker_twist_server" type="marker_server" name="twist_marker_server">
+        <remap from="twist_marker_server/cmd_vel" to="/cmd_vel" />
+    </node>
+
+
+</launch>
