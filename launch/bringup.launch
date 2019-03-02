@@ -16,6 +16,9 @@
     </rosparam>
   </node>
 
+    <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" />
+    <node pkg="tf" type="static_transform_publisher" name="front_mount_to_velodyne" args="0 0 0.o5 0 0 0 /front_mount /velodyne 100"/>
+
   <!-- TODO: Eliminate this by compiling the necessary message definitions into jackal_base. -->
   <node pkg="rosserial_python" type="message_info_service.py" name="rosserial_message_info" />
 
@@ -40,7 +43,7 @@
 
 
 
-    <arg name="joy_dev" default="/dev/input/js0" />
+    <arg name="joy_dev" default="/dev/input/js1" />
     <arg name="joystick" default="true" />
 
     <rosparam command="load" file="$(find jackal_control)/config/teleop.yaml" />
