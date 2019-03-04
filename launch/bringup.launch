@@ -1,6 +1,6 @@
 <launch>
   <include file="$(find jackal_description)/launch/description.launch" />
-  
+
   <node pkg="jackal_base" type="jackal_node" name="jackal_node">
     <rosparam>
       # TODO: Specify these in code rather than here.
@@ -36,7 +36,7 @@
       zeta: 0.001
       publish_tf: false
     </rosparam>
-  </node> 
+  </node>
 
   <!-- Differential controller and basic localization -->
   <include file="$(find jackal_control)/launch/control.launch" />
@@ -65,5 +65,4 @@
   <node pkg="diagnostic_aggregator" type="aggregator_node" name="diagnostic_aggregator">
     <rosparam command="load" file="$(find jackal_base)/config/diagnostic_analyzers.yaml" />
   </node>
-
 </launch>
