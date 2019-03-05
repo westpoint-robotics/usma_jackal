@@ -1,0 +1,9 @@
+This demo allows joystick control of the Jackal with a remotely viewable rviz showing the pointcloud and laser scan.
+- In RVIZ the laser scan is a 2D representation of the 3D point cloud. RVIZ is configured to display this as 2cm BLUE squares. 
+- The color of the 3d point cloud varies based on the intensity of the return.
+
+To Run the demo:
+1. Press the Jackal power button (not the red button).
+2. Once the power button lights up solid blue and the mobility button is solid green, then press the RED BUTTON to trigger the Jackal computer to start.
+3. Allow about 1 minute wait time.
+4. On this computer open a terminal and type in 'jackalviz' and press <enter>. The command jackalviz is an alias located inside the .bashrc file. This alias sets the environmental variables needed to remotely access ROS on the Jackal and it starts RVIZ with a configuration file.
