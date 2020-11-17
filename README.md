@@ -49,8 +49,7 @@ http://packages.clearpathrobotics.com/stable/images/latest/
 
 ## To Incorporate SARA Modular Sensor Unit int Jackal URDF:
 
-0. If you have a version of usma_jackal predating 17 Nov, 2020, download the following and place it in your usma_jackal/urdf directory:
-    - `urdf/sara_seventeen_description.urdf.xacro`
+0. If you have a version of usma_jackal predating 17 Nov, 2020, download the sara_description package from this repository, and place it in usma_jackal.
 1. On your local machine, navigate to usma_jackal/urdf.
 2. Open "jackal.urdf.xacro".
 3. Just above the close robot tag (`</robot>`) insert an include for the SARA URDF.
