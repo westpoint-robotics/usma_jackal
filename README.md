@@ -47,6 +47,21 @@ http://packages.clearpathrobotics.com/stable/images/latest/
 #### To access the ros topics on a remote computer you should install the ros jackal packages.
 - `sudo apt-get install ros-kinetic-jackal*`
 
+## To Incorporate SARA Modular Sensor Unit int Jackal URDF:
+
+0. If you have a version of usma_jackal predating 17 Nov, 2020, download the following and place it in your usma_jackal/urdf directory:
+    - `urdf/sara_seventeen_description.urdf.xacro`
+1. On your local machine, navigate to usma_jackal/urdf.
+2. Open "jackal.urdf.xacro".
+3. Just above the close robot tag (`</robot>`) insert an include for the SARA URDF.
+    - `<xacro:include filename="$(find sara_description)/urdf/sara_seventeen.urdf.xacro"/>`
+4. Save the Jackal URDF.
+5. In a terminal, you can now run RViz, and or Gazebo and view/use the robot with the SARA sensor unit installed.
+    - `roslaunch jackal_gazebo jackal_world.launch` followed by
+    - `roslaunch jackal_viz view_robot.launch`
+    OR, you can run RViz alone with:
+    - `roslaunch jackal_viz view_model.launch`
+
 ##### TODO: 
     - Move joystick node to its own launch file
     - Add URDF for VLP16 to robot
