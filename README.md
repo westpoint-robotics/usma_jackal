@@ -1,3 +1,9 @@
+## Dependenices
+- realsense2
+- ouster_example
+
+## View Model
+`roslaunch usma_jackal view_model.launch`
 
 ## To install the jackal image on the hard drive:
 
