@@ -1,6 +1,7 @@
 ## Dependenices
 - realsense2
 - ouster_example
+- sara_description
 
 ## View Model
 `roslaunch usma_jackal view_model.launch`
