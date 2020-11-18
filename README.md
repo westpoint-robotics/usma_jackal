@@ -7,8 +7,8 @@
 `roslaunch usma_jackal view_model.launch`
 
 ## View Robot in Gazebo
-`roslaunch usma_jackal jackal_world.launch`
-`roslaunch usma_jackal view_robot.launch`
+- $`roslaunch usma_jackal jackal_world.launch`
+- $`roslaunch usma_jackal view_robot.launch`
 
 ## To install the jackal image on the hard drive:
 
