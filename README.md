@@ -6,6 +6,10 @@
 ## View Model
 `roslaunch usma_jackal view_model.launch`
 
+## View Robot in Gazebo
+`roslaunch usma_jackal jackal_world.launch`
+`roslaunch usma_jackal view_robot.launch`
+
 ## To install the jackal image on the hard drive:
 
 1. Download the latest iso from Clearpath at:
