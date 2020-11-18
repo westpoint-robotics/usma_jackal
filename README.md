@@ -60,7 +60,15 @@ http://packages.clearpathrobotics.com/stable/images/latest/
 
 ## To Incorporate SARA Modular Sensor Unit int Jackal URDF:
 
-0. If you have a version of usma_jackal predating 17 Nov, 2020, download the sara_description package from this repository, and place it in usma_jackal.
+0. You will need the dependencies listed above (realsense, ouster, sara_description).  Install as needed:
+   - realsense2_description:
+   - `sudo apt-get install ros-melodic-realsense2-description`
+   - ouster_description:
+   - `cd ~/catkin_ws/src`
+   - `git clone https://github.com/wilselby/ouster_example.git`
+   - sara_description
+   - `cd ~/catkin_ws/src`
+   - `git clone https://github.com/westpoint-robotics/sara_description.git`
 1. On your local machine, navigate to usma_jackal/urdf.
 2. Open "jackal.urdf.xacro".
 3. Just above the close robot tag (`</robot>`) insert an include for the SARA URDF.
