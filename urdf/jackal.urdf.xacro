@@ -22,9 +22,7 @@
   <material name="light_grey"><color rgba="0.4 0.4 0.4 1.0" /></material>
   <material name="yellow"><color rgba="0.8 0.8 0.0 1.0" /></material>
   <material name="black"><color rgba="0.15 0.15 0.15 1.0" /></material>
-  
-  <xacro:include filename="$(find usma_jackal)/urdf/velodyne_and_mount.urdf"/>
-  
+
   <xacro:macro name="wheel" params="prefix *joint_pose">
 
     <link name="${prefix}_wheel_link">
@@ -53,6 +51,12 @@
 
     <gazebo reference="${prefix}_wheel_link">
       <material>Gazebo/DarkGrey</material>
+      <selfCollide>false</selfCollide>
+      <mu1 value="0.5"/>
+      <mu2 value="0.5"/>
+      <kp value="10000000.0" />
+      <kd value="1" />
+      <fdir1 value="1 0 0"/>
     </gazebo>
 
     <joint name="${prefix}_wheel" type="continuous">
@@ -122,18 +126,74 @@
       </inertial>
   </link>
 
-  <link name="fenders_link">
-    <visual>
-      <origin xyz="0 0 ${footprint_vertical_offset}" rpy="${PI/2} 0 ${PI/2}"/>
-      <geometry>
-        <mesh filename="package://jackal_description/meshes/jackal-fenders.stl"/>
-      </geometry>
-      <material name="yellow" />
-    </visual>
-  </link>
-  <joint name="fenders_joint" type="fixed">
+  <xacro:unless value="$(optenv JACKAL_FRONT_ACCESSORY_FENDER 0)">
+    <link name="front_fender_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://jackal_description/meshes/jackal-fender.stl"/>
+        </geometry>
+        <material name="yellow" />
+      </visual>
+    </link>
+  </xacro:unless>
+
+  <xacro:if value="$(optenv JACKAL_FRONT_ACCESSORY_FENDER 0)">
+    <link name="front_fender_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://jackal_description/meshes/accessory_fender.stl"/>
+        </geometry>
+        <material name="yellow" />
+      </visual>
+    </link>
+
+    <link name="front_fender_accessory_link"/>
+    <joint name="front_fender_accessory_joint" type="fixed">
+      <origin xyz="0.25629 0 0.07455" rpy="${PI} 0 0" />
+      <parent link="front_fender_link" />
+      <child link="front_fender_accessory_link" />
+    </joint>
+  </xacro:if>
+
+  <joint name="front_fender_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="chassis_link" />
-    <child link="fenders_link" />
+    <child link="front_fender_link" />
+  </joint>
+
+  <xacro:unless value="$(optenv JACKAL_REAR_ACCESSORY_FENDER 0)">
+    <link name="rear_fender_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://jackal_description/meshes/jackal-fender.stl"/>
+        </geometry>
+        <material name="yellow" />
+      </visual>
+    </link>
+  </xacro:unless>
+
+  <xacro:if value="$(optenv JACKAL_REAR_ACCESSORY_FENDER 0)">
+    <link name="rear_fender_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://jackal_description/meshes/accessory_fender.stl"/>
+        </geometry>
+        <material name="yellow" />
+      </visual>
+    </link>
+
+    <link name="rear_fender_accessory_link"/>
+    <joint name="rear_fender_accessory_joint" type="fixed">
+      <origin xyz="0.25629 0 0.07455" rpy="${PI} 0 0" />
+      <parent link="rear_fender_link" />
+      <child link="rear_fender_accessory_link" />
+    </joint>
+  </xacro:if>
+
+  <joint name="rear_fender_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 ${PI}"/>
+    <parent link="chassis_link" />
+    <child link="rear_fender_link" />
   </joint>
 
   <!-- TODO: Make this internal_imu_link or something, and use a mixed-in xacro
@@ -169,7 +229,7 @@
   </joint>
 
   <link name="mid_mount"></link>
-  <joint name="mid_mount_joint" type="fixed">f
+  <joint name="mid_mount_joint" type="fixed">
     <parent link="chassis_link" />
     <child link="mid_mount" />
     <origin xyz="0 0 ${chassis_height}" />
@@ -197,6 +257,7 @@
        default each one to off.-->
   <xacro:include filename="$(find jackal_description)/urdf/accessories.urdf.xacro" />
 
-  <!-- Optional custom includes. 
-  <xacro:include filename="$(optenv JACKAL_URDF_EXTRAS empty.urdf)" /> -->
+  <!-- Optional custom includes. -->
+  <xacro:include filename="$(find sara_description)/urdf/sara_seventeen.urdf.xacro"/>
+  <!-- <xacro:include filename="$(optenv JACKAL_URDF_EXTRAS empty.urdf)" />-->
 </robot>
