@@ -12,15 +12,20 @@
 
 ## To install the jackal image on the hard drive:
 
-1. Download the latest iso from Clearpath at:
-http://packages.clearpathrobotics.com/stable/images/latest/
+1. Download the [latest](http://packages.clearpathrobotics.com/stable/images/latest/) iso from Clearpath.  Specifically, you will want the [melodic-jackal amd64 iso](http://packages.clearpathrobotics.com/stable/images/latest/melodic-jackal/amd64/)
 
 2. Put this image on thumb drive using a tool such as Unetbootin
     - See: https://unetbootin.github.io/
-    - Or install Unetbooton on Ubuntu with:<br>
-`sudo apt-get install unetbootin`
+    - Or install Unetbooton on Ubuntu with:<br> `sudo apt-get install unetbootin`
+    - Launch UNetbootin (you will be prompted for user authentication; enter your computer's password)
+    - Select the "Diskimage" radio button.  Use the ISO option and use the "..." button to navigate to the ISO you saved in step 1.
+    - Leave the field for "Space used to preserve files accross reboots" at 0.
+    - "Type" should default to USB Drive; leave that setting.
+    - If you have blank USB drive plugged in, the "Drive" field should auto populate with only one option.  If there are multiple options, you will have to figure out which drive will have the ISO on it.  It should have sdb in its name.
+    - Press "OK", and the image will be burned onto the flash drive.  When the burn is done, you may close out of UNetbootin, and eject your flash drive.
 
 3. Connect the USB thumbdrive to the Jackal computer and boot to it. You can get to the boot options by pressing <kbd>del</kbd> while booting up.
+    - Navigate to Boot, and select your USB drive as the first boot option.
 
 4. After the USB thumbdrive install is complete, turn off the computer and remove the USB device.
 
