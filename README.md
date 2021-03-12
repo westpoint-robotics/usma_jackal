@@ -67,6 +67,10 @@
 #### To access the ros topics on a remote computer you should install the ros jackal packages.
 - `sudo apt-get install ros-kinetic-jackal*`
 
+## Time Synchronization Between Jackal and Companion Computers
+
+See Time_Synchronization_Setup.md in this repo.
+
 ## To Incorporate SARA Modular Sensor Unit int Jackal URDF:
 
 0. You will need the dependencies listed above (realsense, ouster, sara_description).  Install as needed:
