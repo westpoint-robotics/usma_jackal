@@ -10,7 +10,7 @@
 - $`roslaunch usma_jackal jackal_world.launch`
 - $`roslaunch usma_jackal view_robot.launch`
 
-## To install the jackal image on the hard drive:
+## To install the Jackal image on the hard drive:
 
 1. Download the [latest](http://packages.clearpathrobotics.com/stable/images/latest/) iso from Clearpath.  Specifically, you will want the [melodic-jackal amd64 iso](http://packages.clearpathrobotics.com/stable/images/latest/melodic-jackal/amd64/)
 
@@ -26,10 +26,14 @@
 
 3. Connect the USB thumbdrive to the Jackal computer and boot to it. You can get to the boot options by pressing <kbd>del</kbd> while booting up.
     - Navigate to Boot, and select your USB drive as the first boot option.
+    - Tab to Boot
+    - Bring up your flash drive as first boot option
+    - F4 to save and exit
+    - The Jackal should now boot to USB.  **If the image installer cannot find a mirror, it will give options to try to establish a connection again (automatically), connect manually, etc.  Leave the top option selected.  Change the cable over to the left hand port, and then Tab to `Continue` and hit <kbd>Enter</kbd>. Everything should proceed automatically, and the Jackal will shut down upon completion.
 
 4. After the USB thumbdrive install is complete, turn off the computer and remove the USB device.
 
-5. Restart the computer and you will be prompted to enter a computer name, by convention we are calling them jackal## (ie jackal01).
+5. Restart the computer and you will be prompted to login.  Use Username: administrator Password: clearpath.  You will then be prompted to "Please enter a new name for cpr-unassigned:", by convention we are calling them jackal## (e.g. jackal01).  You will be asked to enter the password, and then Jackal will reboot.  Username and password will not have changed, and should not be changed.  Now, after you log in, you should see: `administrator@jackal01:~$`or similar depending upon what ## you use to name your Jackal.
 
 6. Modify the network settings:
     - Edit /etc/network/interface to match the interface file in this repo
