@@ -69,7 +69,7 @@
 
 ## Time Synchronization Between Jackal and Companion Computers
 
-See Time_Synchronization_Setup.md in this repo.
+See [Time_Synchronization_Setup.md](https://github.com/westpoint-robotics/robot_instructions/blob/main/time_synchronization/TIME_SYNCH.md) in this repo.
 
 ## To Incorporate SARA Modular Sensor Unit int Jackal URDF:
 
